@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Movies</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="header">
+    <h1>🎬 Movie Catalog</h1>
+    <a class="btn" href="new-movie.html">+ Nueva Película</a>
+</div>
+
+<div class="search-bar">
+
+    <input type="text" placeholder="Buscar por título...">
+
+    <select>
+        <option value="">Todos los géneros</option>
+        <option th:each="genre : ${generos}"
+                th:value="${genre.getIdGenero()}"
+                th:text="${genre.getGenero()}">
+        </option>
+
+    </select>
+
+    <button class="btn">Buscar</button>
+
+</div>
+
+<div class="movie-grid">
+
+    <div class="movie-card" th:each="peli : ${peliculas}">
+        <a th:href="@{/pelicula/{id}(id=${peli.idPelicula})}">
+            <!-- Genera la miniatura usando el ID de la película -->
+            <img th:src="${'https://img.youtube.com' + peli.urlVideo + '/hqdefault.jpg'}" alt="Poster">
+        </a>
+        <div class="movie-info">
+            <h3 th:text="${peli.titulo}">Título</h3>
+            <p th:text="${peli.anyo}">Año</p>
+        </div>
+    </div>
+
+
+
+</div>
+
+</body>
+</html>

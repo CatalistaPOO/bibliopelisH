@@ -1,0 +1,83 @@
+/* Estilos para detalle.html */
+body {
+    background-color: #0b0f19; /* Fondo ultra oscuro */
+    color: #f1f5f9;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.detail-container {
+    width: 90%;
+    max-width: 1000px;
+    background: #161e2d;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid #1e293b;
+    animation: slideUp 0.6s ease-out;
+}
+
+/* Título de la película */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    color: #00ffd9; /* Verde neón */
+    text-align: left;
+    border-left: 5px solid #00ffd9;
+    padding-left: 20px;
+    letter-spacing: -1px;
+}
+
+/* El contenedor del video (YouTube) */
+.video-responsive {
+    border-radius: 16px;
+    box-shadow: 0 0 40px rgba(0, 255, 217, 0.15);
+    border: 2px solid #334155;
+    background: #000;
+}
+
+/* Sección de información y géneros */
+.actions {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #334155;
+}
+
+.actions p {
+    font-size: 1.1rem;
+    color: #94a3b8;
+}
+
+.actions strong {
+    color: #f1f5f9;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* Estilo para los géneros (etiquetas) */
+.actions span {
+    background: #00ffd922; /* Fondo traslúcido */
+    color: #00ffd9;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-left: 10px;
+    border: 1px solid #00ffd944;
+}
+
+/* Animación suave al cargar */
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ajustes para móviles */
+@media (max-width: 600px) {
+    .detail-container { padding: 20px; }
+    h1 { font-size: 1.8rem; }
+}
