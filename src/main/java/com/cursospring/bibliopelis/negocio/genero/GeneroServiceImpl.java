@@ -10,7 +10,7 @@ import java.util.List;
 public class GeneroServiceImpl implements GeneroService{
 
 
-    private final GeneroDAO gDao;
+    private GeneroDAO gDao;
 
     public GeneroServiceImpl(GeneroDAO gDao){
         super();

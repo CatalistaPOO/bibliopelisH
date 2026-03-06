@@ -1,5 +1,6 @@
 package com.cursospring.bibliopelis.controller;
 
+import com.cursospring.bibliopelis.modelo.Genero;
 import com.cursospring.bibliopelis.modelo.Pelicula;
 import com.cursospring.bibliopelis.negocio.genero.GeneroServiceImpl;
 import com.cursospring.bibliopelis.negocio.pelicula.PeliculaService;
@@ -8,6 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Controller
 public class IndexController {
@@ -21,9 +29,18 @@ public class IndexController {
     }
 
     @GetMapping("/")
-    public String getIndexPage(Model model){
+    public String getIndexPage(@RequestParam(required = false) String titulo,
+                               @RequestParam(required = false) Integer generoId,
+                               Model model){
         model.addAttribute("generos", gs.getGeneros());
-        model.addAttribute("peliculas", ps.getPeliculas());
+
+        if((titulo != null && !titulo.isEmpty()) || generoId != null){
+            model.addAttribute("peliculas", ps.getPeliculaPorTituloYPorGeneroId(titulo, generoId));
+            model.addAttribute("titulo", titulo);
+            model.addAttribute("generoId", generoId);
+        }else {
+            model.addAttribute("peliculas", ps.getPeliculas());
+        }
         return "index";
     }
 
@@ -34,6 +51,25 @@ public class IndexController {
         Pelicula peli = ps.getPeliculaPorId(id);
         model.addAttribute("pelicula", peli);
         return "movie-detail"; // Nombre de tu archivo HTML de detalle
+    }
+
+    @GetMapping("/new-movie")
+    public String createNewPelicula(Model model){
+        List<Genero> generos = gs.getGeneros();
+        model.addAttribute("generos", generos);
+        return "new-movie";
+    }
+
+    @PostMapping("/new-movie")
+    public String guardarPelicula(Pelicula pelicula, @RequestParam List<Integer> generosIds) {
+        Set<Genero> gens = new HashSet<>();
+        for (int i = 0; i < generosIds.size(); i++){
+            Genero gener = gs.getGeneroPorId(generosIds.get(i));
+            gens.add(gener);
+        }
+        pelicula.setGeneros(gens);
+        ps.createPelicula(pelicula);
+        return "redirect:/";
     }
 
 

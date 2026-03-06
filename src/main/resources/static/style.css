@@ -9,6 +9,7 @@ body {
     background: #0f172a;
     color: white;
     padding: 20px;
+
 }
 
 /* HEADER */
@@ -98,13 +99,32 @@ body {
 }
 
 /* FORM */
+/* ... (Mantén tu código anterior igual hasta FORM) ... */
+
+/* FORM - Ajustes para centrado y diseño */
+.main-container-centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Centra verticalmente en la pantalla */
+    text-align: center;
+}
+
+.main-container-centered h1 {
+    margin-bottom: 25px;
+    color: #6366f1;
+}
 
 .form-container {
-    max-width: 600px;
+    width: 100%;
+    max-width: 500px; /* Un poco más estrecho queda mejor para formularios */
     margin: auto;
     background: #1e293b;
-    padding: 25px;
+    padding: 30px;
     border-radius: 12px;
+    text-align: left; /* El texto de labels a la izquierda */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 .form-group {
@@ -114,70 +134,55 @@ body {
 }
 
 .form-group label {
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #94a3b8;
+    font-size: 14px;
 }
 
 .form-group input,
 .form-group select {
-    padding: 10px;
+    padding: 12px;
     border-radius: 6px;
-    border: none;
+    border: 1px solid #334155;
+    background: #0f172a;
+    color: white;
+    outline: none;
 }
 
-/* DETAIL */
-
-.detail-container {
-    max-width: 900px;
-    margin: auto;
-    background: #1e293b;
-    padding: 20px;
-    border-radius: 12px;
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
 }
 
-.detail-container img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 15px;
+/* Estilo específico para el SELECT MULTIPLE */
+select[multiple] {
+    height: 120px; /* Altura fija para ver varias opciones */
+    padding: 8px;
 }
 
-.actions {
-    margin-top: 15px;
+select[multiple] option {
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 2px;
+}
+
+select[multiple] option:checked {
+    background: #6366f1 linear-gradient(0deg, #6366f1 0%, #6366f1 100%);
+    color: white;
+}
+
+/* Botones en formulario */
+.form-actions {
     display: flex;
     gap: 10px;
+    margin-top: 20px;
 }
 
-.btn-danger {
-    background: #ef4444;
+.form-actions .btn {
+    flex: 1;
+    text-align: center;
 }
 
-.btn-danger:hover {
-    background: #dc2626;
-}
-
-/* VIDEO */
-
-video {
-    width: 100%;
-    margin-top: 15px;
-    border-radius: 10px;
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 1000px) {
-    .movie-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 700px) {
-    .movie-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 450px) {
-    .movie-grid {
-        grid-template-columns: 1fr;
-    }
-}
+/* ... (Resto de tu código: DETAIL, VIDEO, RESPONSIVE) ... */

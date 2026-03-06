@@ -10,20 +10,21 @@ import java.util.List;
 public class PeliculaServiceImpl implements PeliculaService {
 
 
-    private final PeliculaDAO pDao;
+    private PeliculaDAO pDao;
 
     public PeliculaServiceImpl(PeliculaDAO pDao){
         super();
         this.pDao = pDao;
     }
 
+
     @Override
     public List<Pelicula> getPeliculas() {
         return pDao.findAll();
     }
 
-    public Pelicula getPeliculaPorId(int id){
-        return pDao.findPeliculaByIdPelicula(id);
+    public Pelicula getPeliculaPorId(int idPelicula){
+        return pDao.findById(idPelicula).get();
     }
 
     @Override
@@ -35,4 +36,11 @@ public class PeliculaServiceImpl implements PeliculaService {
     public void createPelicula(Pelicula pelicula) {
         pDao.save(pelicula);
     }
+
+    @Override
+    public List<Pelicula> getPeliculaPorTituloYPorGeneroId(String titulo, Integer generoId) {
+        return pDao.buscarPorFiltros(titulo, generoId);
+    }
+
+
 }

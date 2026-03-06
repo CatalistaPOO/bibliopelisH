@@ -17,7 +17,7 @@ public class Pelicula {
     private int anyo;
     @Column(name="url_video")
     private String urlVideo;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "peliculas_generos",
             joinColumns = @JoinColumn(name = "idPelicula"),
             inverseJoinColumns = @JoinColumn(name = "idGenero"))

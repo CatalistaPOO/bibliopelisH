@@ -2,6 +2,7 @@ package com.cursospring.bibliopelis.negocio.pelicula;
 
 
 import com.cursospring.bibliopelis.modelo.Pelicula;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -15,7 +16,5 @@ public interface PeliculaService {
 
     public void createPelicula(Pelicula pelicula);
 
-
-
-
+public List<Pelicula> getPeliculaPorTituloYPorGeneroId(@Param("titulo") String titulo, @Param("generoId") Integer generoId);
 }

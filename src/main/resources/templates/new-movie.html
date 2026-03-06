@@ -10,35 +10,38 @@
 <h1>Alta de Película</h1>
 
 <div class="form-container">
-
-    <form>
+    <!-- Apuntamos a la ruta del @PostMapping y definimos el método POST -->
+    <form th:action="@{/new-movie}" method="post">
 
         <div class="form-group">
             <label>Título</label>
-            <input type="text" name="title" required>
+            <!-- El 'name' debe coincidir con el atributo en la clase Pelicula -->
+            <input type="text" name="titulo" placeholder="Ej: Inception" required>
         </div>
 
         <div class="form-group">
-            <label>Thumbnail URL</label>
-            <input type="text" name="thumbnail">
+            <label>Año de la Película</label>
+            <input type="number" name="anyo" placeholder="2024">
         </div>
 
         <div class="form-group">
-            <label>Video URL</label>
-            <input type="text" name="video">
+            <label>ID Video YouTube</label>
+            <input type="text" name="urlVideo" placeholder="Ej: oQuFpGhfRhg">
         </div>
 
         <div class="form-group">
-            <label>Género</label>
-            <select name="genre">
-                <option value="1">Acción</option>
-                <option value="2">Drama</option>
-                <option value="3">Comedia</option>
-                <option value="4">Horror</option>
+            <label>Géneros (Mantén Ctrl para elegir varios)</label>
+            <!-- Añadimos 'multiple' y cambiamos el nombre a 'generosIds' -->
+            <select name="generosIds" multiple size="4">
+                <option th:each="gens : ${generos}"
+                        th:value="${gens.getIdGenero()}"
+                        th:text="${gens.getGenero()}">
+                </option>
             </select>
         </div>
 
-        <button class="btn">Guardar</button>
+        <button type="submit" class="btn">Guardar</button>
+        <a th:href="@{/}" class="btn" style="background: #334155; color: white;">Cancelar</a>
 
     </form>
 

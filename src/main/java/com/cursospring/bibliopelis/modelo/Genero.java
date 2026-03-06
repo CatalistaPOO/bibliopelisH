@@ -20,9 +20,8 @@ public class Genero {
     public Genero() {
     }
 
-    public Genero(String genero, Set<Pelicula> peliculas) {
+    public Genero(String genero) {
         this.genero = genero;
-        this.peliculas = peliculas;
     }
 
 
