@@ -17,7 +17,12 @@ public interface PeliculaDAO extends JpaRepository<Pelicula, Integer> {
 
     @Query("SELECT DISTINCT p FROM Pelicula p LEFT JOIN p.generos g " +
             "WHERE (:titulo IS NULL OR LOWER(p.titulo) LIKE LOWER(CONCAT('%', :titulo, '%'))) " +
-            "AND (:generoId IS NULL OR g.idGenero = :generoId)")
-    List<Pelicula> buscarPorFiltros(@Param("titulo") String titulo, @Param("generoId") Integer generoId);
+            "AND (:generoId IS NULL OR g.idGenero = :generoId) " + // Añade espacios al final de las líneas
+            "AND (:anyo IS NULL OR p.anyo = :anyo)")
+    List<Pelicula> buscarPorFiltros(@Param("titulo") String titulo,
+                                    @Param("generoId") Integer generoId,
+                                    @Param("anyo") Integer anyo);
+
+
 
 }

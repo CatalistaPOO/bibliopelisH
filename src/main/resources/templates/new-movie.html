@@ -21,7 +21,11 @@
 
         <div class="form-group">
             <label>Año de la Película</label>
-            <input type="number" name="anyo" placeholder="2024">
+            <input type="number"
+                   name="anyo"
+                   th:placeholder="'1920-' + ${currentYear}"
+                    th:min="1920"
+                    th:max="${currentYear}">
         </div>
 
         <div class="form-group">

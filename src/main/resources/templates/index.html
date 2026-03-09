@@ -9,12 +9,21 @@
 
 <div class="header">
     <h1>🎬 Movie Catalog</h1>
+
     <a class="btn" th:href="@{/new-movie}">+ Nueva Película</a>
 </div>
 
 <form th:action="@{/}" method="get" class="search-bar">
 
     <input type="text" name="titulo" th:value="${titulo}" placeholder="Buscar por título...">
+
+    <input type="number"
+           name="anyo"
+           th:value="${anyo}"
+           th:min="1920"
+           th:max="${currentYear}"
+           th:placeholder="'Año (1930-' + ${currentYear} + ')'"
+           style="width: 160px">
 
     <select name="generoId">
         <option value="">Todos los géneros</option>
@@ -24,18 +33,20 @@
                 th:selected="${genre.idGenero == generoId}">
         </option>
     </select>
-    <button type="submit" class="btn">Buscar</button>
+    <div class="search-actions">
+        <button type="submit" class="btn">Buscar</button>
+        <!-- El contador ahora vive aquí -->
+        <span id="cantPeli" th:text="${peliculas.size()}">0</span>
+    </div>
 </form>
+
 
 <div class="movie-grid">
 
     <div class="movie-card" th:each="peli : ${peliculas}">
+        <!-- En el index.html, dentro del th:each -->
         <a th:href="@{/pelicula/{id}(id=${peli.idPelicula})}">
-            <!-- Genera la miniatura usando el ID de la película -->
-            <!-- Se añade /vi/ antes del ID del video -->
             <img th:src="${'https://img.youtube.com/vi/' + peli.urlVideo + '/hqdefault.jpg'}" alt="Poster">
-
-
         </a>
         <div class="movie-info">
             <h3 th:text="${peli.titulo}">Título</h3>

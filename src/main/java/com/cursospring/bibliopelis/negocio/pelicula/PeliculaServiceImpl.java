@@ -24,7 +24,7 @@ public class PeliculaServiceImpl implements PeliculaService {
     }
 
     public Pelicula getPeliculaPorId(int idPelicula){
-        return pDao.findById(idPelicula).get();
+        return pDao.findById(idPelicula).orElse(null);
     }
 
     @Override
@@ -38,8 +38,8 @@ public class PeliculaServiceImpl implements PeliculaService {
     }
 
     @Override
-    public List<Pelicula> getPeliculaPorTituloYPorGeneroId(String titulo, Integer generoId) {
-        return pDao.buscarPorFiltros(titulo, generoId);
+    public List<Pelicula> getPeliculaPorTituloYPorGeneroId(String titulo, Integer generoId, Integer anyo) {
+        return pDao.buscarPorFiltros(titulo, generoId, anyo);
     }
 
 

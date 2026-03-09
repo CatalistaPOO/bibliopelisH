@@ -16,5 +16,7 @@ public interface PeliculaService {
 
     public void createPelicula(Pelicula pelicula);
 
-public List<Pelicula> getPeliculaPorTituloYPorGeneroId(@Param("titulo") String titulo, @Param("generoId") Integer generoId);
+public List<Pelicula> getPeliculaPorTituloYPorGeneroId(String titulo,
+                                                       Integer generoId,
+                                                       Integer anyo);
 }

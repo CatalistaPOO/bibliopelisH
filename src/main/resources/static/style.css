@@ -185,4 +185,40 @@ select[multiple] option:checked {
     text-align: center;
 }
 
-/* ... (Resto de tu código: DETAIL, VIDEO, RESPONSIVE) ... */
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap; /* Para móviles */
+}
+
+.search-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: 5px; /* Pequeño respiro respecto al select */
+}
+
+#cantPeli {
+    background-color: #6366f1; /* Cambiado a Indigo para que pegue con tu diseño */
+    color: white;
+    font-weight: bold;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#cantPeli::before {
+    content: "Películas: ";
+    font-weight: normal;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 4px;
+    opacity: 0.8;
+}
+
+
+
