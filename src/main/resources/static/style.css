@@ -219,8 +219,40 @@ select[multiple] option:checked {
     margin-right: 4px;
     opacity: 0.8;
 }
+#barra-navegacion {
+    /* Cargamos la imagen desde la carpeta static */
+    background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)),
+    url('/descarga.jpg');
+    min-height: 250px;
+    background-size: cover;       /* La imagen cubre todo el espacio */
+    background-position: center;  /* Centrada */
+    padding: 30px 20px;           /* Más alto para que se aprecie el fondo */
+    border-radius: 12px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: flex-end;    /* Empuja el contenido al fondo */
+    justify-content: center;    /* Centra el menú sobre el fondo */
+    border-bottom: 3px solid #6366f1;
+}
 
+.navbar {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
 
+.navbar li a {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8); /* Sombra para leer mejor sobre la foto */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.navbar li a:hover {
+    color: #6366f1;
+}
 
 
 
