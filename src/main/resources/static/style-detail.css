@@ -81,3 +81,20 @@ h1 {
     .detail-container { padding: 20px; }
     h1 { font-size: 1.8rem; }
 }
+
+.btn-delete {
+    background: #ef4444; /* Rojo vibrante */
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+     /* Para que ocupe todo el ancho de la tarjeta */
+    transition: background 0.2s;
+}
+
+.btn-delete:hover {
+    background: #dc2626; /* Rojo más oscuro */
+}

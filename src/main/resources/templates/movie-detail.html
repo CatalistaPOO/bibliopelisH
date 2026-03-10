@@ -31,6 +31,14 @@
         <p><strong>Año: </strong> <span th:text="${pelicula.getAnyo()}"></span></p>
 
     </div>
+    <form th:action="@{/pelicula/delete/{id}(id=${pelicula.idPelicula})}" method="post" style="margin-top: 10px">
+        <button type="submit"
+                class="btn-delete"
+                th:onclick="return confirm('¿Estás seguro de que quieres borrar la película: ' + [[${pelicula.getTitulo}]] + '?');">
+                Borrar
+        </button>
+    </form>
+
 </div>
 
 </body>

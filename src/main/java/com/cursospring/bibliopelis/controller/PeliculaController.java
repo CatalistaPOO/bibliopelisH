@@ -52,7 +52,15 @@ public class PeliculaController {
         ps.createPelicula(pelicula);
         return "redirect:/";
     }
+
+    @PostMapping("/pelicula/delete/{id}")
+    public String borrarPelicula(@PathVariable int id){
+            ps.deletePeliculaPorId(id);
+            return "redirect:/";
     }
+
+
+}
 
 
 
